@@ -13,6 +13,5 @@ def init():
 def loop():
     global led
     led.write(1)  
-    time.sleep(0.2)  
-    led.write(0)  
-    time.sleep(0.2)
+    time.sleep(0.5)  
+    led.write(0)

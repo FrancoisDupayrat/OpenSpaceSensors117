@@ -7,7 +7,7 @@ import time
 
 def init():
     global sensor
-    sensor = TSL2561()
+    sensor = TSL2561(pause=0)
 
 def loop(gain=0):
     global sensor
