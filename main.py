@@ -33,6 +33,6 @@ while True:
 	degree = temperature.loop()
 	lux = light.loop()
 	quality = air_quality.loop()
-	lcd.setText("%.0f lux, %.01f C\n%d db, %s" % (degree, lux, db, quality))
+	lcd.setText("%.0f lux, %.01f C\n%d db, %s" % (lux, degree, db, quality))
 	time.sleep(.5)
 
