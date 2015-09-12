@@ -11,5 +11,6 @@ def init():
 def loop():
 	global sound
 	soundVal = int(sound.read())
-	print soundVal
+	print ("Sound: %d" % soundVal)
 	time.sleep(.5)
+	return soundVal

@@ -11,7 +11,9 @@ def init():
 
 def loop(gain=0):
     global sensor
-    print("Luminosity: %.02f" % sensor.readLux())
+    lux = sensor.readLux();
+    print("Luminosity: %.02f" % lux)
+    return lux
 
 #code from https://github.com/seanbechhofer/raspberrypi/blob/master/python/TSL2561.py with a few modifications to run on Intel Edison
 class TSL2561:
