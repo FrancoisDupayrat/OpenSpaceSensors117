@@ -4,10 +4,12 @@ import mraa
 import sys
 import time
 
-# A0 on Grove Shield
-sound = mraa.Aio(0)   
-
-while 1:
-    soundVal = int(sound.read())
-    print soundVal
-    time.sleep(.5)
+def init():
+	global sound 
+	sound = mraa.Aio(0) 
+	
+def loop():
+	global sound
+	soundVal = int(sound.read())
+	print soundVal
+	time.sleep(.5)
