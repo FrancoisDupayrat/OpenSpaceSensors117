@@ -5,6 +5,7 @@
 OSS117 is a connected object made to control some environmental values for best performances at work.
 
 ## How it works ?
+
 OSS117 is based on Intel Edison SoC with Grove sensors :
 
 * Temperature
@@ -13,9 +14,13 @@ OSS117 is based on Intel Edison SoC with Grove sensors :
 * Light
 * Air quality
 
+## See all steps on instructables.com
+
+http://www.instructables.com/id/OPENSPACESENSORS-117-aka-OSS117/
+
 ## Why ?
 
-This project was born in the Intel IoT Roadshow in Paris (12 & 13 September 2015).
+This project was born in the Intel IoT Roadshow in Paris (12 & 13 September 2015). #IntelMaker
 
 ## How can i install it ?
 
