@@ -10,7 +10,8 @@ OSS117 is based on Intel Edison SoC with Grove sensors :
 * Temperature
 * Sound
 * Dust
-* Moisture
+* Light
+* Air quality
 
 ## Why ?
 
@@ -43,6 +44,14 @@ Install Flask :
     pip install flask
     
 The Webserver is installed !
+
+After that, launch the main.py :
+    
+    python main.py
+    
+(Optional) Launch the webserver if you want the Web Interface :
+
+    python webserver.py
 
 ## Contributors
 
