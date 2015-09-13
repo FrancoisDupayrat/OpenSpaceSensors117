@@ -10,11 +10,15 @@ AIR_QUALITY_PIN = 3
 def init():
     global sensor
     sensor = mraa.Aio(AIR_QUALITY_PIN)
-
-
-def loop():
+    
+def getValue():
     global sensor
     sensor_v = sensor.read()
+    return sensor_v
+
+def getString():
+    global sensor
+    sensor_v = getValue()
     text = "No pollution"
     if sensor_v > 700:
         text = "High pollution"
@@ -23,4 +27,3 @@ def loop():
 
     print ("Air quality: %d, text: %s" % (sensor_v, text))
     return str(text)
-

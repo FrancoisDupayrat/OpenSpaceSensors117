@@ -8,6 +8,7 @@ import lcd
 import air_quality
 import time
 import ConfigParser
+import led_bar
 
 
 def getValues():
@@ -17,7 +18,8 @@ def getValues():
     degree = config.get("Values", "degree")
     lux = config.get("Values", "lux")
     quality = config.get("Values", "quality")
-    data = [db, degree, lux, quality]
+    qualityValue = config.get("Values", "qualityValue")
+    data = [db, degree, lux, qualityValue]
     return data
 
 def init():
@@ -39,6 +41,9 @@ def init():
 
     #Air Quality is on Analog Pin 1
     air_quality.init()
+    
+    #Led bar is on pin D8, uses pin 8 and 9
+    led_bar.init()
 
 if __name__=="__main__":
     init()
@@ -49,13 +54,34 @@ if __name__=="__main__":
     	db = sound.loop() # time.sleep 0.5s
     	degree = temperature.loop()
     	lux = light.loop()
-    	quality = air_quality.loop()
+    	quality = air_quality.getString()
+    	qualityValue = air_quality.getValue()
     	lcd.setText("%.0f lux, %.01f C\n%d db, %s" % (lux, degree, db, quality))
+        level = 0    
+        if qualityValue > 300:
+            level = level + 1
+        
+        if lux < 200:
+            level = level + 2
+        elif lux < 100:
+            level = level + 1
+        
+        if degree > 30 or degree < 18:
+            level = level + 2
+        elif degree > 26 or degree < 22:
+            level = level + 1
+        
+        if db > 100:
+            level = level + 1
+            
+        led_bar.setLevel(level)
+        
         cfgfile = open("values.ini",'w')
         config.set('Values', 'db', db)
         config.set('Values', 'lux', lux)
         config.set('Values', 'degree', degree)
         config.set('Values', 'quality', quality)
+        config.set('Values', 'qualityValue', qualityValue)
         config.write(cfgfile)  
         cfgfile.close()
     	time.sleep(.5)
