@@ -80,7 +80,7 @@ if __name__=="__main__":
         config.set('Values', 'lux', round(lux,0)) # in lux
         config.set('Values', 'degree', round(degree,1)) # in degree
         config.set('Values', 'quality', quality) # string
-        config.set('Values', 'qualityValue', min(qualityValue/10, 100)) #in percent
+        config.set('Values', 'qualityValue', 100 - min(qualityValue/10, 100)) #in percent
         config.write(cfgfile)  
         cfgfile.close()
     	time.sleep(.5)
