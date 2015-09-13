@@ -10,7 +10,6 @@ import time
 import ConfigParser
 import led_bar
 
-
 def getValues():
     config = ConfigParser.ConfigParser()
     config.read("values.ini")
@@ -77,11 +76,11 @@ if __name__=="__main__":
         led_bar.setLevel(level)
         
         cfgfile = open("values.ini",'w')
-        config.set('Values', 'db', db)
-        config.set('Values', 'lux', lux)
-        config.set('Values', 'degree', degree)
-        config.set('Values', 'quality', quality)
-        config.set('Values', 'qualityValue', qualityValue)
+        config.set('Values', 'db', max(db / 5, 100)) # in percent
+        config.set('Values', 'lux', round(lux,0)) # in lux
+        config.set('Values', 'degree', round(degree,1)) # in degree
+        config.set('Values', 'quality', quality) # string
+        config.set('Values', 'qualityValue', max(qualityValue/10, 100)) #in percent
         config.write(cfgfile)  
         cfgfile.close()
     	time.sleep(.5)
