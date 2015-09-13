@@ -76,11 +76,11 @@ if __name__=="__main__":
         led_bar.setLevel(level)
         
         cfgfile = open("values.ini",'w')
-        config.set('Values', 'db', min(db / 5, 100)) # in percent
-        config.set('Values', 'lux', round(lux,0)) # in lux
+        config.set('Values', 'db', round(min(db / 5, 100))) # in percent
+        config.set('Values', 'lux', round(lux)) # in lux
         config.set('Values', 'degree', round(degree,1)) # in degree
         config.set('Values', 'quality', quality) # string
-        config.set('Values', 'qualityValue', 100 - min(qualityValue/10, 100)) #in percent
+        config.set('Values', 'qualityValue', 100 - min(round(qualityValue/10), 100)) #in percent
         config.write(cfgfile)  
         cfgfile.close()
     	time.sleep(.5)
